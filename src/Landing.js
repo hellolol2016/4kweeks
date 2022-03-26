@@ -1,5 +1,6 @@
 // Hooks/React components
 import React, { useState } from "react";
+import { Link as Redirect }  from "react-router-dom";
 
 // Styling
 import { Button, Image, Link, Box, Center, HStack, Text, VStack, background, textDecoration } from "@chakra-ui/react";
@@ -21,30 +22,15 @@ export default function Landing()
               A tool to accomplish your goals and manage your time.
           </Miniheader>
           <Line marginTop={"10px"} marginBottom={"35px"}></Line>
-          {
-            startedLoading ? 
-            <Button
-            colorScheme={"blue"}
-            isLoading
-            color={"white"} 
-            padding={"50px 30px 50px 30px"} 
-            fontSize={{base: "24px", md: "30px", lg: "36px"}}
-            >
-              Get Started
-            </Button>
-            :
-           
-            <Button
-            colorScheme={"blue"}
-            fontFamily={"Monsterrat, sans-serif"}
-            color={"white"} 
-            padding={"50px 30px 50px 30px"} 
-            fontSize={{base: "24px", md: "30px", lg: "36px"}}
-            onClick={() => setStartedLoading(true)}
-            >
-              Get Started
-            </Button>
-          } 
+          <Redirect to={"/"}><Button
+          colorScheme={"blue"}
+          fontFamily={"Monsterrat, sans-serif"}
+          color={"white"} 
+          padding={"50px 30px 50px 30px"} 
+          fontSize={{base: "24px", md: "30px", lg: "36px"}}
+          >
+            Get Started
+          </Button></Redirect>
         </Container>
       </Body>
   );

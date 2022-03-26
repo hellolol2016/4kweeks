@@ -12,6 +12,9 @@ import { GripVertical } from "tabler-icons-react";
 import { Box, Center, HStack, Text } from "@chakra-ui/react";
 import { useState } from "react";
 
+// icons
+import { BsTrashFill } from "react-icons/bs";
+
 export default function Table({ type, title }) {
   if (!JSON.parse(localStorage.getItem(type))) {
     console.log("local is empytuy you dfumb");
@@ -35,18 +38,20 @@ export default function Table({ type, title }) {
             <GripVertical size={18} />
           </Center>
           <TextInput
-            sx={{ width: "20vw", maxWidth: "300px" }}
+            sx={{ width: "26vw", maxWidth: "380px" }}
             placeholder={`A goal for your ${type} list`}
             {...form.getListInputProps("goals", index, "name")}
           />
           <Button
+            padding={"0"}
+            color={"red"}
             onClick={(e) => {
               form.removeListItem("goals", index);
               setClosedMax(form.values.goals.length > 7);
               console.log(closedMax);
             }}
           >
-            Delete
+            <BsTrashFill color={"white"} size={"18px"}/>
           </Button>
         </Group>
       )}
@@ -95,12 +100,13 @@ export default function Table({ type, title }) {
             if (!closedMax) {
               form.addListItem("goals", { name: "", check: false });
             }
-            setClosedMax(form.values.goals.length > 7);
-            console.log(form.values.goals.length + 1);
+            setClosedMax(form.values.goals.length > 5);
+            console.log(form.values.goals.length );
+            console.log(closedMax);
           }}
           color= {closedMax ? "red":"blue"}
         >
-          Add goal
+          {closedMax ? "Max Goals" : "Add Goal"}
         </Button>
       </Group>
     </Box>

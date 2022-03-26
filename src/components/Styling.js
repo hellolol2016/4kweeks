@@ -54,10 +54,11 @@ export function Miniheader({...additions}) {
 export function Header({...additions}) {
   return (
     <Box 
+      display={"flex"}
+      justifyContent={"center"}
       width={"100%"}
       minHeight={"170px"}
       bg={"#222222"}
-      marginBottom={"15px"}
       borderBottom={"7px solid rgb(34, 139, 230)"}
       {...additions}
 
@@ -94,7 +95,6 @@ export function LargeHeader({...additions}) {
       width={"100%"}
       minHeight={"400px"}
       bg={"#222222"}
-      marginBottom={"15px"}
       borderBottom={"7px solid rgb(34, 139, 230)"}
       {...additions}
 

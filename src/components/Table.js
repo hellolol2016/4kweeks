@@ -10,15 +10,14 @@ import { useForm, formList } from "@mantine/form";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { GripVertical } from "tabler-icons-react";
 import { Box, Center, HStack, Text } from "@chakra-ui/react";
+import { useState } from "react";
 
 export default function Table({ type, title }) {
   if (!JSON.parse(localStorage.getItem(type))) {
     console.log("local is empytuy you dfumb");
     localStorage.setItem(
       type,
-      JSON.stringify([
-        { name: "Start by changing me!", check: false },
-      ])
+      JSON.stringify([{ name: "Start by changing me!", check: false }])
     );
   }
   let list = JSON.parse(localStorage.getItem(type));
@@ -36,14 +35,15 @@ export default function Table({ type, title }) {
             <GripVertical size={18} />
           </Center>
           <TextInput
-            sx={{ width: "20vw",maxWidth:"300px" }}
+            sx={{ width: "20vw", maxWidth: "300px" }}
             placeholder={`A goal for your ${type} list`}
             {...form.getListInputProps("goals", index, "name")}
           />
           <Button
             onClick={(e) => {
-              form.values.goals.splice(index,1);
-              console.log(form.values.goals);
+              form.removeListItem("goals", index);
+              setClosedMax(form.values.goals.length > 6);
+              console.log(closedMax);
             }}
           >
             Delete
@@ -54,14 +54,16 @@ export default function Table({ type, title }) {
   ));
 
   localStorage.setItem(type, JSON.stringify(form.values.goals));
+
+  const [closedMax, setClosedMax] = useState(false);
+
   return (
     <Box sx={{ maxWidth: 500 }} mx="auto">
       {fields.length > 0 ? (
-        <Group mb="xs">
-        </Group>
+        <Group mb="xs"></Group>
       ) : (
         <Text color="dimmed" align="center">
-          None...
+          All done!
         </Text>
       )}
 
@@ -89,7 +91,14 @@ export default function Table({ type, title }) {
 
       <Group position="center" mt="md">
         <Button
-          onClick={() => form.addListItem("goals", { name: "", check: false })}
+          onClick={() => {
+            if (!closedMax) {
+              form.addListItem("goals", { name: "", check: false });
+            }
+            setClosedMax(form.values.goals.length > 4);
+            console.log(form.values.goals.length + 1);
+          }}
+          color= {closedMax ? "red":"blue"}
         >
           Add goal
         </Button>

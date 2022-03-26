@@ -19,9 +19,7 @@ export default function Table({ type }) {
       ])
     );
   }
-  console.log(JSON.parse(localStorage.getItem("closed")));
   let list = JSON.parse(localStorage.getItem(type));
-  console.log(list);
   const form = useForm({
     initialValues: {
       employees: formList(list),
@@ -30,6 +28,7 @@ export default function Table({ type }) {
   console.log(form.values.employees);
 
   const fields = form.values.employees.map((_, index) => (
+
     <Draggable key={index} index={index} draggableId={index.toString()}>
       {(provided) => (
         <Group ref={provided.innerRef} mt="xs" {...provided.draggableProps}>
@@ -45,7 +44,8 @@ export default function Table({ type }) {
       )}
     </Draggable>
   ));
-
+  
+  localStorage.setItem("closed", JSON.stringify(form.values.employees));
   return (
     <Box sx={{ maxWidth: 500 }} mx="auto">
       {fields.length > 0 ? (
@@ -65,9 +65,7 @@ export default function Table({ type }) {
             from: source.index,
             to: destination.index,
           });
-          console.log("local right now is", JSON.stringify(localStorage.getItem("closed")));
           localStorage.setItem("closed", JSON.stringify(form.values.employees));
-          console.log("changed local to ",JSON.stringify(form.values.employees) );
         }}
       >
         <Droppable droppableId="dnd-list" direction="vertical">

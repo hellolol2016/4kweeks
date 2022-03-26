@@ -25,14 +25,6 @@ function Container({...additions}) {
   );
 } 
 
-function MiniHeader({...additions}) {
-  return (
-    <Box
-
-    ></Box>
-  );
-} 
-
 // Main
 function App() {
   return (
@@ -40,11 +32,11 @@ function App() {
       <Box paddingBottom={"15px"} w={"30%"} margin={"auto"}><img w={"100%"} src={logo} alt={"4K WEEKS"}/></Box>
       <HStack>
         <Container>
-          <MiniHeader>Working Goals</MiniHeader>
+          <Text fontSize="4xl"> Working Goals</Text>
           <Table type={"closed"}/>
         </Container>
         <Container>
-          <MiniHeader>Pending</MiniHeader>
+          <h2>Pending</h2>
           <Table type={"closed"}/>
         </Container>
       </HStack>

@@ -5,6 +5,8 @@ import { Link as Redirect }  from "react-router-dom";
 // Styling
 import { Button, Image, Link, Box, Center, HStack, Text, VStack, background, textDecoration } from "@chakra-ui/react";
 import { Container, Line, Miniheader, Header, LargeHeader, Body } from "./components/Styling";
+import "./fonts.css";
+
 
 
 export default function Landing()
@@ -24,7 +26,7 @@ export default function Landing()
           <Line marginTop={"10px"} marginBottom={"35px"}></Line>
           <Redirect to={"/"}><Button
           colorScheme={"blue"}
-          fontFamily={"Monsterrat, sans-serif"}
+          fontFamily={"Montserrat, sans-serif"}
           color={"white"} 
           padding={"50px 30px 50px 30px"} 
           fontSize={{base: "24px", md: "30px", lg: "36px"}}

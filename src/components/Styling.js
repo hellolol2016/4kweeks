@@ -4,6 +4,7 @@ import { Link as Redirect }  from "react-router-dom";
 
 // Styling
 import { Image, Link, Box, Center, HStack, Text, VStack, background } from "@chakra-ui/react";
+import "../fonts.css";
 
 // Images
 import logo from "../img/logo.svg";
@@ -65,8 +66,9 @@ export function Header({...additions}) {
         margin={"auto"}
         marginTop={"35px"}
         transitionDuration={"300ms"}
-        transitionProperty={"width, min-width"}
+        transitionProperty={"width, margin"}
         _hover={{
+          marginTop: "33px",
           width: "515px"
         }}
       >
@@ -100,8 +102,6 @@ export function LargeHeader({...additions}) {
         w={"70%"}
         minWidth={"500px"}
         margin={"auto"}
-        transitionDuration={"300ms"}
-        transitionProperty={"width, min-width"}
       >
         <Redirect
           color={"transparent"} 

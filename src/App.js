@@ -9,6 +9,7 @@ import React from "react";
 // Styling
 import { Image, Link, Box, Center, HStack, Text, VStack, background } from "@chakra-ui/react";
 import { Container, Miniheader, Header, Body} from "./components/Styling";
+import "./fonts.css";
 
 
 

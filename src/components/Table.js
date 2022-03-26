@@ -1,34 +1,34 @@
-import { Group, TextInput, Code, Button } from "@mantine/core";
+import {
+  Group,
+  TextInput,
+  Code,
+  Button,
+  Checkbox,
+  CheckboxGroup,
+} from "@mantine/core";
 import { useForm, formList } from "@mantine/form";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import { GripVertical } from "tabler-icons-react";
-import { Box, Center, HStack, Text, VStack } from "@chakra-ui/react";
+import { Box, Center, HStack, Text } from "@chakra-ui/react";
 
-export default function Table({ type }) {
-  console.log(JSON.parse(localStorage.getItem("closed")));
-  if (JSON.parse(localStorage.getItem("closed") == null)) {
+export default function Table({ type, title }) {
+  if (!JSON.parse(localStorage.getItem(type))) {
     console.log("local is empytuy you dfumb");
     localStorage.setItem(
-      "closed",
+      type,
       JSON.stringify([
-        { name: "John Doe", email: "john@mantine.dev" },
-        { name: "Bill Love", email: "bill@mantine.dev" },
-        { name: "Nancy Eagle", email: "nanacy@mantine.dev" },
-        { name: "Lim Notch", email: "lim@mantine.dev" },
-        { name: "Susan Seven", email: "susan@mantine.dev" },
+        { name: "Start by changing me!", check: false },
       ])
     );
   }
   let list = JSON.parse(localStorage.getItem(type));
   const form = useForm({
     initialValues: {
-      employees: formList(list),
+      goals: formList(list),
     },
   });
-  console.log(form.values.employees);
 
-  const fields = form.values.employees.map((_, index) => (
-
+  const fields = form.values.goals.map((_, index) => (
     <Draggable key={index} index={index} draggableId={index.toString()}>
       {(provided) => (
         <Group ref={provided.innerRef} mt="xs" {...provided.draggableProps}>
@@ -36,60 +36,64 @@ export default function Table({ type }) {
             <GripVertical size={18} />
           </Center>
           <TextInput
-            sx={{ width: "20vw" }}
+            sx={{ width: "20vw",maxWidth:"300px" }}
             placeholder={`A goal for your ${type} list`}
-            {...form.getListInputProps("employees", index, "name")}
+            {...form.getListInputProps("goals", index, "name")}
           />
+          <Button
+            onClick={(e) => {
+              form.values.goals.splice(index,1);
+              console.log(form.values.goals);
+            }}
+          >
+            Delete
+          </Button>
         </Group>
       )}
     </Draggable>
   ));
-  
-  localStorage.setItem("closed", JSON.stringify(form.values.employees));
+
+  localStorage.setItem(type, JSON.stringify(form.values.goals));
   return (
     <Box sx={{ maxWidth: 500 }} mx="auto">
       {fields.length > 0 ? (
         <Group mb="xs">
-          <Text weight={500}>Name</Text>
         </Group>
       ) : (
         <Text color="dimmed" align="center">
-          No one here...
+          None...
         </Text>
       )}
 
       <DragDropContext
         //THIS IS WHERE DROP DROP DROP DROP
         onDragEnd={({ destination, source }) => {
-          form.reorderListItem("employees", {
+          form.reorderListItem("goals", {
             from: source.index,
             to: destination.index,
           });
-          localStorage.setItem("closed", JSON.stringify(form.values.employees));
+          localStorage.setItem(type, JSON.stringify(form.values.goals));
         }}
       >
         <Droppable droppableId="dnd-list" direction="vertical">
           {(provided) => (
-            <div {...provided.droppableProps} ref={provided.innerRef}>
-              {fields}
-              {provided.placeholder}
-            </div>
+            <>
+              <Box {...provided.droppableProps} ref={provided.innerRef}>
+                {fields}
+                {provided.placeholder}
+              </Box>
+            </>
           )}
         </Droppable>
       </DragDropContext>
 
       <Group position="center" mt="md">
         <Button
-          onClick={() => form.addListItem("employees", { name: "", email: "" })}
+          onClick={() => form.addListItem("goals", { name: "", check: false })}
         >
-          Add employee
+          Add goal
         </Button>
       </Group>
-
-      <Text size="sm" weight={500} mt="md">
-        Form values:
-      </Text>
-      <Code block>{JSON.stringify(form.values.employees, null, 2)}</Code>
     </Box>
   );
 }

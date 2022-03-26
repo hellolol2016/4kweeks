@@ -8,14 +8,14 @@ import React from "react";
 
 // Styling
 import { Image, Link, Box, Center, HStack, Text, VStack, background } from "@chakra-ui/react";
-import { Container, Miniheader, Header } from "./components/Styling";
+import { Container, Miniheader, Header, Body} from "./components/Styling";
 
 
 
 // Main
 function App() {
   return (
-    <VStack paddingBottom={"30px"} margin={"auto"} fontFamily={"Bahnschrift, sans-serif"} w={"100%"}bg={"#111111"} color="white">
+    <Body>
       <Header></Header>
       <HStack alignItems={"top"} paddingBottom={"10px"}>
         <Container>
@@ -43,7 +43,7 @@ function App() {
           <Table type={"closed"}/>
         </Container>
       </VStack>
-    </VStack>
+    </Body>
   );
 }
 

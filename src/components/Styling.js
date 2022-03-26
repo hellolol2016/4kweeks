@@ -1,17 +1,35 @@
-// Hooks
+// Hooks/React components
 import React from "react";
+import { Link as Redirect }  from "react-router-dom";
 
 // Styling
 import { Image, Link, Box, Center, HStack, Text, VStack, background } from "@chakra-ui/react";
 
 // Images
-import logo from "../img/logo.png";
+import logo from "../img/logo.svg";
 
+
+export function Body({...additions}) {
+  return (
+    <VStack 
+      minHeight={"100vh"}
+      paddingBottom={"30px"} 
+      margin={"auto"} 
+      fontFamily={"Montserrat, sans-serif"} 
+      w={"100%"}
+      bg={"rgb(20, 20, 20)"} 
+      color="white"
+      {...additions}
+    ></VStack>
+  );
+}
 
 export function Container({...additions}) {
   return (
     <Box 
-    boxShadow={"5px 5px 0px 0px #D4AF37"}
+    marginLeft={"10px"}
+    marginRight={"10px"}
+    boxShadow={"6px 6px 0px 0px rgb(255, 196, 13)"}
     textAlign={"center"}
     w={"100%"}
     bg={"linear-gradient(135deg, transparent 20px, lightgray 0)"} 
@@ -26,7 +44,7 @@ export function Miniheader({...additions}) {
   return (
     <Text
     fontSize={"30px"}
-    textShadow={"2px 2px 3px #222222"}
+    textShadow={"1px 1px 3px #222222"}
     {...additions}
     ></Text>
   )
@@ -35,30 +53,78 @@ export function Miniheader({...additions}) {
 export function Header({...additions}) {
   return (
     <Box 
-      paddingTop={"25px"} 
-      paddingBottom={"15px"} 
-      minWidth={"450px"} 
-      w={"30%"} 
-      margin={"auto"}
+      width={"100%"}
+      minHeight={"170px"}
+      bg={"#222222"}
+      marginBottom={"15px"}
+      borderBottom={"7px solid rgb(34, 139, 230)"}
       {...additions}
-    >
-      <Link 
-        color={"transparent"} 
-        href={"/landing"}>
-        <img 
-          w={"100%"} 
-          src={logo}
-          alt={"4K WEEKS"}
-        />
-      </Link>
+
+      ><Box 
+        w={"500px"}
+        margin={"auto"}
+        marginTop={"35px"}
+        transitionDuration={"300ms"}
+        transitionProperty={"width, min-width"}
+        _hover={{
+          width: "515px"
+        }}
+      >
+        <Redirect 
+          color={"transparent"} 
+          to={"/landing"}>
+          <img 
+            w={"100%"} 
+            src={logo}
+            alt={"4K WEEKS"}
+          />
+        </Redirect>
+      </Box>
     </Box>
   )
 }
 
-export function Footer({...additions}) {
+export function LargeHeader({...additions}) {
+  return (
+    <Box 
+      display={"flex"}
+      justifyContent={"center"}
+      width={"100%"}
+      minHeight={"400px"}
+      bg={"#222222"}
+      marginBottom={"15px"}
+      borderBottom={"7px solid rgb(34, 139, 230)"}
+      {...additions}
+
+      ><Box 
+        w={"70%"}
+        minWidth={"500px"}
+        margin={"auto"}
+        transitionDuration={"300ms"}
+        transitionProperty={"width, min-width"}
+      >
+        <Redirect
+          color={"transparent"} 
+          to={"/landing"}>
+          <img 
+            w={"100%"} 
+            src={logo}
+            alt={"4K WEEKS"}
+          />
+        </Redirect>
+      </Box>
+    </Box>
+  )
+}
+
+export function Line({...additions}) {
   return (
     <Box
-
+      margin={"auto"}
+      bg={"rgb(34, 139, 230)"}
+      w={"120px"}
+      h={"5px"} 
+      {...additions}
     ></Box>
   )
 }

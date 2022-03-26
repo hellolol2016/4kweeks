@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-import App from "./App";
 import { ChakraProvider } from "@chakra-ui/react";
-import Test from "./Test";
 import {BrowserRouter, Route, Routes } from "react-router-dom"
+
+import App from "./App";
+import Test from "./Test";
 import Landing from "./Landing"
 ReactDOM.render(
   <BrowserRouter>

@@ -59,8 +59,8 @@ export default function Table({ type, title }) {
   ));
 
   localStorage.setItem(type, JSON.stringify(form.values.goals));
-
-  const [closedMax, setClosedMax] = useState(false);
+  let len = JSON.parse(localStorage.getItem(type)).length;
+  const [closedMax, setClosedMax] = useState(type==="closed" && len>=7);
 
   return (
     <Box sx={{ maxWidth: 500 }} mx="auto">
@@ -97,10 +97,10 @@ export default function Table({ type, title }) {
       <Group position="center" mt="md">
         <Button
           onClick={() => {
-            if (!closedMax) {
+            if (!closedMax && type!=="closed" ) {
               form.addListItem("goals", { name: "", check: false });
             }
-            setClosedMax(form.values.goals.length > 5);
+            setClosedMax(type==="closed"&&form.values.goals.length > 5);
             console.log(form.values.goals.length );
             console.log(closedMax);
           }}

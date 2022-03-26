@@ -5,9 +5,11 @@ import { Link as Redirect }  from "react-router-dom";
 // Styling
 import { Image, Link, Box, Center, HStack, Text, VStack, background } from "@chakra-ui/react";
 import "../fonts.css";
+import "../keyframes.css";
 
 // Images
 import logo from "../img/logo.svg";
+
 
 
 export function Body({...additions}) {
@@ -17,7 +19,7 @@ export function Body({...additions}) {
       paddingBottom={"30px"} 
       margin={"auto"} 
       fontFamily={"Montserrat, sans-serif"} 
-      w={"100%"}
+      w={"75vw"}
       bg={"rgb(20, 20, 20)"} 
       color="white"
       {...additions}
@@ -54,22 +56,24 @@ export function Miniheader({...additions}) {
 export function Header({...additions}) {
   return (
     <Box 
+      margin={"auto"}
+      animation={"1s ease-in-out 0s 1 headerShrink"}
       display={"flex"}
       justifyContent={"center"}
-      width={"100%"}
+      width={"75vw"}
       minHeight={"170px"}
       bg={"#222222"}
       borderBottom={"7px solid rgb(34, 139, 230)"}
       {...additions}
 
       ><Box 
-        w={"500px"}
+        animation={"1s ease-in-out 0s 1 logoShrink"}
+        width={"500px"}
         margin={"auto"}
         marginTop={"35px"}
         transitionDuration={"300ms"}
         transitionProperty={"width, margin"}
         _hover={{
-          marginTop: "33px",
           width: "515px"
         }}
       >
@@ -90,9 +94,10 @@ export function Header({...additions}) {
 export function LargeHeader({...additions}) {
   return (
     <Box 
+      margin={"auto"}
       display={"flex"}
       justifyContent={"center"}
-      width={"100%"}
+      width={"75vw"}
       minHeight={"400px"}
       bg={"#222222"}
       borderBottom={"7px solid rgb(34, 139, 230)"}

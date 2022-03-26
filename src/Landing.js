@@ -49,7 +49,7 @@ export default function Landing() {
         <Body>
           <Container marginTop={"20px"} w={"60%"}>
             <Miniheader
-              fontSize={{ base: "28px", md: "32px", lg: "50px" }}
+              fontSize={{ base: "22px", md: "27px", lg: "38px" }}
               paddingLeft={"14%"}
               paddingRight={"14%"}
             >

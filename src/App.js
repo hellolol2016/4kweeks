@@ -14,6 +14,10 @@ import {
   Text,
   VStack,
   background,
+  InputGroup,
+  InputLeftAddon,
+  Input,
+  Textarea,
 } from "@chakra-ui/react";
 import { Container, Miniheader, Header, Body } from "./components/Styling";
 import "./fonts.css";
@@ -39,13 +43,13 @@ function App() {
         transition={{ duration: 1, type: "easeInOut" }}
         style={{ position: "relative" }}
       >
-        <Body>
+        <Body >
           <HStack paddingTop={"20px"} alignItems={"top"} paddingBottom={"10px"}>
-            <Container minWidth={"40vw"}>
+            <Container minWidth={"30vw"}>
               <Miniheader>Closed List</Miniheader>
               <Table type={"closed"} />
             </Container>
-            <Container minWidth={"40vw"}>
+            <Container minWidth={"35vw"}>
               <Miniheader>Open List</Miniheader>
               <Table type={"open"} />
             </Container>
@@ -53,17 +57,16 @@ function App() {
           <VStack>
             <Container minWidth={"50vw"}>
               <Miniheader>Strategic Underachievement</Miniheader>
-              <HStack>
                 <VStack>
-                  <Text>I will slack off in... </Text>
-                  <Text>...</Text>
+                  <InputGroup>
+                    <InputLeftAddon children="I will slack off on:" /> 
+                    <Textarea type="text" placeholder="..."/>
+                  </InputGroup>
+                  <InputGroup>
+                    <InputLeftAddon children="To focus on:" /> 
+                    <Textarea type="text" placeholder="..."/>
+                  </InputGroup>
                 </VStack>
-                <VStack>
-                  <Text paddingRight={"5px"}>So I can succeed in...</Text>
-                  <Text>...</Text>
-                </VStack>
-              </HStack>
-              <Table type={"closed"} />
             </Container>
           </VStack>
         </Body>

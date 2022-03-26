@@ -5,17 +5,21 @@ import { GripVertical } from "tabler-icons-react";
 import { Box, Center, HStack, Text, VStack } from "@chakra-ui/react";
 
 export default function Table({ type }) {
-  localStorage.setItem(
-    "closed",
-    JSON.stringify([
-      { name: "John Doe", email: "john@mantine.dev" },
-      { name: "Bill Love", email: "bill@mantine.dev" },
-      { name: "Nancy Eagle", email: "nanacy@mantine.dev" },
-      { name: "Lim Notch", email: "lim@mantine.dev" },
-      { name: "Susan Seven", email: "susan@mantine.dev" },
-    ])
-  );
-    console.log(JSON.parse(localStorage.getItem("closed")));
+  console.log(JSON.parse(localStorage.getItem("closed")));
+  if (JSON.parse(localStorage.getItem("closed") == null)) {
+    console.log("local is empytuy you dfumb");
+    localStorage.setItem(
+      "closed",
+      JSON.stringify([
+        { name: "John Doe", email: "john@mantine.dev" },
+        { name: "Bill Love", email: "bill@mantine.dev" },
+        { name: "Nancy Eagle", email: "nanacy@mantine.dev" },
+        { name: "Lim Notch", email: "lim@mantine.dev" },
+        { name: "Susan Seven", email: "susan@mantine.dev" },
+      ])
+    );
+  }
+  console.log(JSON.parse(localStorage.getItem("closed")));
   let list = JSON.parse(localStorage.getItem(type));
   console.log(list);
   const form = useForm({
@@ -23,6 +27,7 @@ export default function Table({ type }) {
       employees: formList(list),
     },
   });
+  console.log(form.values.employees);
 
   const fields = form.values.employees.map((_, index) => (
     <Draggable key={index} index={index} draggableId={index.toString()}>
@@ -54,15 +59,16 @@ export default function Table({ type }) {
       )}
 
       <DragDropContext
-        onDragEnd={({ destination, source }) =>
-          {form.reorderListItem("employees", {
+        //THIS IS WHERE DROP DROP DROP DROP
+        onDragEnd={({ destination, source }) => {
+          form.reorderListItem("employees", {
             from: source.index,
             to: destination.index,
-          })
-          localStorage.setItem("closed",list);
-        console.log("changed local");
-        }
-        }
+          });
+          console.log("local right now is", JSON.stringify(localStorage.getItem("closed")));
+          localStorage.setItem("closed", JSON.stringify(form.values.employees));
+          console.log("changed local to ",JSON.stringify(form.values.employees) );
+        }}
       >
         <Droppable droppableId="dnd-list" direction="vertical">
           {(provided) => (
@@ -85,7 +91,7 @@ export default function Table({ type }) {
       <Text size="sm" weight={500} mt="md">
         Form values:
       </Text>
-      <Code block>{JSON.stringify(form.values, null, 2)}</Code>
+      <Code block>{JSON.stringify(form.values.employees, null, 2)}</Code>
     </Box>
   );
 }

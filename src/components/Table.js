@@ -42,7 +42,7 @@ export default function Table({ type, title }) {
           <Button
             onClick={(e) => {
               form.removeListItem("goals", index);
-              setClosedMax(form.values.goals.length > 6);
+              setClosedMax(form.values.goals.length > 7);
               console.log(closedMax);
             }}
           >
@@ -95,7 +95,7 @@ export default function Table({ type, title }) {
             if (!closedMax) {
               form.addListItem("goals", { name: "", check: false });
             }
-            setClosedMax(form.values.goals.length > 4);
+            setClosedMax(form.values.goals.length > 7);
             console.log(form.values.goals.length + 1);
           }}
           color= {closedMax ? "red":"blue"}

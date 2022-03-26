@@ -1,19 +1,55 @@
-import React, { useState } from "react";
 import "./App.css";
+
+// Components 
 import Table from "./components/Table";
-import { Image, Box, Center, HStack, Text, VStack } from "@chakra-ui/react";
 
+// Hooks
+import React, { useState } from "react";
 
+// ChakraUI
+import { Image, Box, Center, HStack, Text, VStack, background } from "@chakra-ui/react";
+
+// Images
+import logo from "./img/logo.png";
+
+function Container({...additions}) {
+  return (
+    <Box 
+      textAlign={"center"}
+      w={"100%"}
+      bg={"lightgray"} 
+      padding={"30px"}
+      color={"black"}
+      {...additions}
+    ></Box>
+  );
+} 
+
+function MiniHeader({...additions}) {
+  return (
+    <Box
+
+    ></Box>
+  );
+} 
+
+// Main
 function App() {
   return (
-    <VStack>
-      <Box><Image src={"./img/logo.png"}/></Box>
+    <VStack fontFamily={"Bahnschrift, sans-serif"} w={"85"}bg={"#111111"} color="white">
+      <Box paddingBottom={"15px"} w={"30%"} margin={"auto"}><img w={"100%"} src={logo} alt={"4K WEEKS"}/></Box>
       <HStack>
-        <Box>Closed list</Box>
-        <Box>Open list</Box>
+        <Container>
+          <MiniHeader>Working Goals</MiniHeader>
+          <Table type={"closed"}/>
+        </Container>
+        <Container>
+          <MiniHeader>Pending</MiniHeader>
+          <Table type={"closed"}/>
+        </Container>
       </HStack>
       <VStack>
-        <Box>Strategic Underachievement</Box>
+        <Container>Strategic Underachievement</Container>
         <HStack>
           <VStack>
             <Text>I will slack off in... </Text>
@@ -25,7 +61,7 @@ function App() {
           </VStack>
         </HStack>
       </VStack>
-    <Table />
+    <Table type={"closed"}/>
     </VStack>
   );
 }

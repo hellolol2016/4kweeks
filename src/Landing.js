@@ -78,6 +78,7 @@ export default function Landing() {
             </Container>
 
           </VStack>
+          <Text size="20px">Introduction video</Text> 
           <iframe width="560" height="315" src="https://www.youtube.com/embed/wHro9Xl5EYg?start=128" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </Body>
       </motion.div>

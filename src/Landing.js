@@ -79,7 +79,7 @@ export default function Landing() {
 
           </VStack>
           <Text marginTop={"50px"} fontFamily={"Comfortaa, Montserrat, sans-serif"} fontSize={"40px"}>Introduction Video</Text> 
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/wHro9Xl5EYg?start=128" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          <iframe width="560" height="315" src="https://www.youtube.com/watch?v=wHro9Xl5EYg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </Body>
       </motion.div>
     </AnimatePresence>

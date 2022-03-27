@@ -75,7 +75,7 @@ function App() {
                   list is by completeing goals on the closed list or by forever
                   abandoning a goal on the closed list.
                 </Text>
-                <Text fontSize={"10px"}>Not sure what we&apos;re talking about? Check out <Link color="#228be6" target="_blank" href="https://www.youtube.com/watch?v=wHro9Xl5EYg&t=249s" rel="noreferrer">THIS lifechanging video!</Link></Text>
+                <Text fontSize={"10px"}>Not sure what we&apos;re talking about? Check out <Link color="#228be6" target="_blank" href="https://www.youtube.com/watch?v=wHro9Xl5EYg" rel="noreferrer">THIS lifechanging video!</Link></Text>
               </Container>
               <Container w={{base: "50vw", lg: "35vw"}}>
                 <Miniheader>Open List</Miniheader>

@@ -52,15 +52,17 @@ export default function Landing() {
         style={{ position: "relative" }}
       >
         <Body>
-          <VStack w={"100%"} bgImg={banner} bgPosition={"center"} bgSize={"cover"} paddingBottom={"40px"}>
-            <Container marginTop={"20px"} w={"60%"}>
+          <VStack w={"100%"} bgImg={banner} bgPosition={"center"} bgSize={"cover"} paddingBottom={"40px"} mb={"20px"}>
+            <Container bg={"#111111"} marginTop={"20px"} w={"70%"} color={"white"}>
               <Miniheader
-                fontSize={{ base: "22px", md: "27px", lg: "38px" }}
+                fontSize={{base: "27px", md: "27px", lg: "34", xl: "38px" }}
                 paddingLeft={"14%"}
                 paddingRight={"14%"}
               >
                 A tool to accomplish your goals and manage your time.
+
               </Miniheader>
+              <Text m="10px">Watch the video below before getting started!</Text>
               <Line marginTop={"10px"} marginBottom={"35px"}></Line>
               <Redirect to={"/"}>
                 <Button
@@ -68,13 +70,15 @@ export default function Landing() {
                   fontFamily={"Montserrat, sans-serif"}
                   color={"white"}
                   padding={"50px 30px 50px 30px"}
-                  fontSize={{ base: "24px", md: "30px", lg: "36px" }}
+                  fontSize={{ base: "18px", md: "24px", lg: "28px" }}
                 >
                   Get Started
                 </Button>
               </Redirect>
             </Container>
+
           </VStack>
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/wHro9Xl5EYg?start=128" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </Body>
       </motion.div>
     </AnimatePresence>

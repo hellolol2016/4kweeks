@@ -19,6 +19,7 @@ import {
   Input,
   Textarea,
   Stack,
+  LinkBox,
 } from "@chakra-ui/react";
 import {
   Container,
@@ -69,13 +70,14 @@ function App() {
               <Container w={{base: "50vw", lg: "35vw"}} marginRight={{base: "0", lg: "10px"}}>
                 <Miniheader>Closed List</Miniheader>
                 <Table type={"closed"} />
-                <Text>
-                  Understand that the only way to add more goals to your closed
+                <Text pt={"20px"}>
+                  Remember that the only way to add more goals to your closed
                   list is by completeing goals on the closed list or by forever
                   abandoning a goal on the closed list.
                 </Text>
+                <Text fontSize={"10px"}>Not sure what we&apos;re talking about? Check out <Link color="#228be6" target="_blank" href="https://www.youtube.com/watch?v=wHro9Xl5EYg&t=249s" rel="noreferrer">THIS lifechanging video!</Link></Text>
               </Container>
-              <Container w={{base: "50vw", lg: "35vw"}} marginleft={{base: "0", lg: "10px"}}>
+              <Container w={{base: "50vw", lg: "35vw"}}>
                 <Miniheader>Open List</Miniheader>
                 <Table type={"open"} />
               </Container>

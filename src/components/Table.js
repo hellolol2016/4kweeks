@@ -31,7 +31,7 @@ export default function Table({ type, title }) {
   });
 
   const fields = form.values.goals.map((_, index) => (
-    <Draggable key={index} index={index} draggableId={index.toString()} mr={"0"}>
+    <Draggable key={index} index={index} draggableId={index.toString()}>
       {(provided) => (
         <Group ref={provided.innerRef} mt="xs" {...provided.draggableProps}>
           <Center {...provided.dragHandleProps}>
@@ -40,6 +40,7 @@ export default function Table({ type, title }) {
           <TextInput
             sx={{ width: "22vw", maxWidth: "370px" }}
             placeholder={`A goal for your ${type} list`}
+            fontsize={{base:"10px", md:'16px'}}
             {...form.getListInputProps("goals", index, "name")}
           />
           <Button

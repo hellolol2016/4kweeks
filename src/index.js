@@ -17,15 +17,15 @@ const variants = {
 };
 
 ReactDOM.render(
-  <BrowserRouter >
+  <BrowserRouter>
     <ChakraProvider>
       <Routes>
         <Route
           path="/"
           element={
             <Box bg={"#222222"}>
-                <App />
-</Box>
+              <App />
+            </Box>
           }
         />
         <Route path="test" element={<Test />} />
@@ -33,8 +33,8 @@ ReactDOM.render(
           path="landing"
           element={
             <Box bg={"#222222"}>
-                <Landing />
-</Box>
+              <Landing />
+            </Box>
           }
         />
       </Routes>

@@ -13,7 +13,7 @@ import { Box, Center, HStack, Text } from "@chakra-ui/react";
 import { useState } from "react";
 
 // icons
-import { BsTrashFill } from "react-icons/bs";
+import { ImCheckmark } from "react-icons/im";
 
 export default function Table({ type, title }) {
   if (!JSON.parse(localStorage.getItem(type))) {
@@ -31,27 +31,28 @@ export default function Table({ type, title }) {
   });
 
   const fields = form.values.goals.map((_, index) => (
-    <Draggable key={index} index={index} draggableId={index.toString()}>
+    <Draggable key={index} index={index} draggableId={index.toString()} mr={"0"}>
       {(provided) => (
         <Group ref={provided.innerRef} mt="xs" {...provided.draggableProps}>
           <Center {...provided.dragHandleProps}>
             <GripVertical size={18} />
           </Center>
           <TextInput
-            sx={{ width: "26vw", maxWidth: "380px" }}
+            sx={{ width: "22vw", maxWidth: "370px" }}
             placeholder={`A goal for your ${type} list`}
             {...form.getListInputProps("goals", index, "name")}
           />
           <Button
-            padding={"0"}
-            color={"red"}
+            size={""}
+            p={"4px"}
+            color={"green"}
             onClick={(e) => {
               form.removeListItem("goals", index);
               setClosedMax(form.values.goals.length > 7);
               console.log(closedMax);
             }}
           >
-            <BsTrashFill color={"white"} size={"18px"}/>
+            <ImCheckmark color={"white"} size={"18px"}/>
           </Button>
         </Group>
       )}
@@ -97,16 +98,16 @@ export default function Table({ type, title }) {
       <Group position="center" mt="md">
         <Button
           onClick={() => {
-            if (!closedMax && type!=="closed" ) {
+            if (!closedMax) {
               form.addListItem("goals", { name: "", check: false });
             }
             setClosedMax(type==="closed"&&form.values.goals.length > 5);
             console.log(form.values.goals.length );
             console.log(closedMax);
           }}
-          color= {closedMax ? "red":"blue"}
+          color= {closedMax && type==="closed" ? "red":"blue"}
         >
-          {closedMax ? "Max Goals" : "Add Goal"}
+          {closedMax&&type==="closed" ? "Max Goals" : "Add Goal"}
         </Button>
       </Group>
     </Box>

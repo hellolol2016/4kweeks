@@ -9,6 +9,7 @@
 
 @keyframes logoShrink {
   0% {
+    margin-top: auto;
     width: 70%;
     min-width: 500px;
   }

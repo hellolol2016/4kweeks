@@ -30,9 +30,10 @@ export function Body({...additions}) {
 export function Container({...additions}) {
   return (
     <Box 
-    marginLeft={"10px"}
-    marginRight={"10px"}
     boxShadow={"6px 6px 0px 0px rgb(255, 196, 13)"}
+    diplay={"flex"}
+    flexDirection={"column"}
+    alignItems={"center"}
     textAlign={"center"}
     w={"100%"}
     bg={"linear-gradient(135deg, transparent 20px, lightgray 0)"} 

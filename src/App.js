@@ -70,7 +70,7 @@ function App() {
               <Container w={{base: "50vw", lg: "35vw"}} marginRight={{base: "0", lg: "10px"}}>
                 <Miniheader>Closed List</Miniheader>
                 <Table type={"closed"} />
-                <Text pt={"20px"}>
+                <Text pt={"20px"} fontSize={{base:"10px",md:"16px"}}>
                   Remember that the only way to add more goals to your closed
                   list is by completeing goals on the closed list or by forever
                   abandoning a goal on the closed list.

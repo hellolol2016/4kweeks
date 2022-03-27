@@ -33,14 +33,15 @@ export default function Table({ type, title }) {
   const fields = form.values.goals.map((_, index) => (
     <Draggable key={index} index={index} draggableId={index.toString()}>
       {(provided) => (
+
         <Group ref={provided.innerRef} mt="xs" {...provided.draggableProps}>
+          <HStack width={"100%"}>
           <Center {...provided.dragHandleProps}>
             <GripVertical size={18} />
           </Center>
           <TextInput
-            sx={{ width: "22vw", maxWidth: "370px" }}
+            sx={{ width: "100%"}}
             placeholder={`A goal for your ${type} list`}
-            fontsize={{base:"10px", md:'16px'}}
             {...form.getListInputProps("goals", index, "name")}
           />
           <Button
@@ -54,7 +55,7 @@ export default function Table({ type, title }) {
             }}
           >
             <ImCheckmark color={"white"} size={"18px"}/>
-          </Button>
+          </Button></HStack>
         </Group>
       )}
     </Draggable>

@@ -23,6 +23,7 @@ export function Body({...additions}) {
       bg={"rgb(20, 20, 20)"} 
       color="white"
       {...additions}
+      
     ></VStack>
   );
 }
@@ -58,9 +59,9 @@ export function Header({...additions}) {
   return (
     <Box 
       margin={"auto"}
-      animation={"1s ease-in-out 0s 1 headerShrink"}
       display={"flex"}
       justifyContent={"center"}
+      animation={"1s ease-in-out 0s 1 headerShrink"}
       width={"75vw"}
       minHeight={"170px"}
       bg={"#222222"}

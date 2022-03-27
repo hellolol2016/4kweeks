@@ -27,6 +27,11 @@ import "./fonts.css";
 
 import { motion, AnimatePresence } from "framer-motion";
 
+
+import banner from "./img/landing_main.png";
+
+
+
 export default function Landing() {
   const [startedLoading, setStartedLoading] = useState(false);
   console.log(window.scrollY);
@@ -47,27 +52,29 @@ export default function Landing() {
         style={{ position: "relative" }}
       >
         <Body>
-          <Container marginTop={"20px"} w={"60%"}>
-            <Miniheader
-              fontSize={{ base: "22px", md: "27px", lg: "38px" }}
-              paddingLeft={"14%"}
-              paddingRight={"14%"}
-            >
-              A tool to accomplish your goals and manage your time.
-            </Miniheader>
-            <Line marginTop={"10px"} marginBottom={"35px"}></Line>
-            <Redirect to={"/"}>
-              <Button
-                colorScheme={"blue"}
-                fontFamily={"Montserrat, sans-serif"}
-                color={"white"}
-                padding={"50px 30px 50px 30px"}
-                fontSize={{ base: "24px", md: "30px", lg: "36px" }}
+          <VStack w={"100%"} bgImg={banner} bgPosition={"center"} bgSize={"cover"} paddingBottom={"40px"}>
+            <Container marginTop={"20px"} w={"60%"}>
+              <Miniheader
+                fontSize={{ base: "22px", md: "27px", lg: "38px" }}
+                paddingLeft={"14%"}
+                paddingRight={"14%"}
               >
-                Get Started
-              </Button>
-            </Redirect>
-          </Container>
+                A tool to accomplish your goals and manage your time.
+              </Miniheader>
+              <Line marginTop={"10px"} marginBottom={"35px"}></Line>
+              <Redirect to={"/"}>
+                <Button
+                  colorScheme={"blue"}
+                  fontFamily={"Montserrat, sans-serif"}
+                  color={"white"}
+                  padding={"50px 30px 50px 30px"}
+                  fontSize={{ base: "24px", md: "30px", lg: "36px" }}
+                >
+                  Get Started
+                </Button>
+              </Redirect>
+            </Container>
+          </VStack>
         </Body>
       </motion.div>
     </AnimatePresence>
